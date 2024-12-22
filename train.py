@@ -69,7 +69,7 @@ def train(params):
     log(log_fd, "Dataset loaded!")
 
     # model
-    model = PCN(num_dense=16384, latent_dim=1024, grid_size=4).to(params.device)
+    model = PCN(num_dense=778, latent_dim=1024, grid_size=4).to(params.device)
 
     # optimizer
     optimizer = Optim.Adam(model.parameters(), lr=params.lr, betas=(0.9, 0.999))
@@ -139,7 +139,9 @@ def train(params):
         with torch.no_grad():
             rand_iter = random.randint(0, len(val_dataloader) - 1)  # for visualization
 
-            for i, (p, c) in enumerate(val_dataloader):
+            for i, (p, c) in enumerate(
+
+            ):
                 p, c = p.to(params.device), c.to(params.device)
                 coarse_pred, dense_pred = model(p)
                 total_cd_l1 += l1_cd(dense_pred, c).item()
