@@ -69,7 +69,7 @@ def train(params):
     log(log_fd, "Dataset loaded!")
 
     # model
-    model = PCN(num_dense=778, latent_dim=1024, grid_size=4).to(params.device)
+    model = PCN(num_dense=784, latent_dim=1024, grid_size=4).to(params.device)
 
     # optimizer
     optimizer = Optim.Adam(model.parameters(), lr=params.lr, betas=(0.9, 0.999))
