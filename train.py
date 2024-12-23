@@ -139,9 +139,7 @@ def train(params):
         with torch.no_grad():
             rand_iter = random.randint(0, len(val_dataloader) - 1)  # for visualization
 
-            for i, (p, c) in enumerate(
-
-            ):
+            for i, (p, c) in enumerate(val_dataloader):
                 p, c = p.to(params.device), c.to(params.device)
                 coarse_pred, dense_pred = model(p)
                 total_cd_l1 += l1_cd(dense_pred, c).item()
